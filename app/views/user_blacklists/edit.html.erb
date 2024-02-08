@@ -30,7 +30,7 @@
             <%= f.text_field :reason, class: 'form-control', required: '' %>
             <div class="invalid-feedback">Please provide a valid reason.</div>
             <%= f.label :level, class: 'control-label' %>
-            <%= f.select :level, options_for_select([['1 - Products fail to start', 1], ['2 - :trol: (dont use, unimplemented)', 2], ['3 - Kicks them with the specified reason message', 3]]), {}, { class: 'form-control' } %>
+            <%= f.select :level, options_for_select([['1 - Products fail to start', 1], ['2 - :trol: (dont use, unimplemented)', 2], ['3 - Kicks them with the specified reason message', 3], ['4 - all of the above + publicly shamed in our Discord server', 4]]), {}, { class: 'form-control' } %>
             <div class="invalid-feedback">Please select a blacklist level.</div>
         </div>
 

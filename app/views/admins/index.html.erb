@@ -13,10 +13,10 @@
     <thead>
       <tr>
         <th>Avatar</th>
+        <th>Name</th>
         <th>Email</th>
         <th>Role</th>
         <th>Disabled</th>
-        <th>Full Name</th>
         <th>Google User ID</th>
         <th>Actions</th>
       </tr>
@@ -25,10 +25,10 @@
       <% @admins.each do |admin| %>
         <tr>
           <td><img src=<%= admin.avatar_url.to_s %> width="32" height="32" style="border-radius:50%" alt="<%= admin.full_name %>'s Avatar"></td>
+          <td><%= admin.full_name %></td>
           <td><%= admin.email %></td>
           <td><%= consolidate_roles(admin) %></td>
           <td><%= admin.disabled ? 'Yes' : 'No' %></td>
-          <td><%= admin.full_name %></td>
           <td><%= admin.uid %></td>
           <td>
             <%= link_to 'Edit', edit_admin_path(admin), class: 'btn btn-primary' %>

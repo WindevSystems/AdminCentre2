@@ -27,7 +27,7 @@ class AdminsController < ApplicationController
   end
 
   def destroy
-    @admin = Admin.find(params[:id])
+    @admin = Admin.find(params[:uid])
     if current_admin.support? or current_admin.lesseradmin? or current_admin.id == @admin.id or current_admin.admin?
       flash[:error] = "You do not have permission to do that."
       redirect_to admins_path
@@ -36,6 +36,10 @@ class AdminsController < ApplicationController
       @admin.destroy
       redirect_to admins_path
     end
+  end
+
+  def show
+    @admin = Admin.find(params[:uid])
   end
 
   private
