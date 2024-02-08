@@ -20,12 +20,18 @@ class UserBlacklistsController < ApplicationController
   end
 
   def create
+    if current_admin.support? or current_admin.lesseradmin?
+      flash[:error] = "You do not have permission to do that."
+      redirect_to user_blacklists_path
+      return
+    else
     @user_blacklist = UserBlacklist.new(user_blacklist_params)
     if @user_blacklist.save
       redirect_to user_blacklists_path
     else
       render 'new'
     end
+  end
   end
 
   def edit
@@ -34,6 +40,11 @@ class UserBlacklistsController < ApplicationController
 
 
   def update
+    if current_admin.support? or current_admin.lesseradmin?
+      flash[:error] = "You do not have permission to do that."
+      redirect_to user_blacklists_path
+      return
+    else
     @user_blacklist = UserBlacklist.find_by(userid: params[:userid])
     puts params
     if @user_blacklist.update(user_blacklist_params)
@@ -41,6 +52,7 @@ class UserBlacklistsController < ApplicationController
     else
       render 'edit'
     end
+  end
   end
 
   def destroy

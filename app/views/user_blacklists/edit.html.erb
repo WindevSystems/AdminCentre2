@@ -4,7 +4,7 @@
     <%= flash[:error] %>
   </div>
 <% end %>
-<% if current_admin.support? %>
+<% if current_admin.support? or current_admin.lesseradmin? or current_admin.disabled? %>
         <div class=" p-5 text-white pseudo-jumbotron-withbg">
                 <h1>403 Forbidden</h1>
                 <p>As Support, you cant directly edit blacklists. Place a request instead.</p>

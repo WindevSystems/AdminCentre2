@@ -1,0 +1,55 @@
+<%= render "dashboards/navbar" %>
+<% if current_admin.support? or current_admin.lesseradmin? or current_admin.admin? or current_admin.disabled? %>
+<div class="p-5 text-white pseudo-jumbotron-withbg">
+    <h1>Unauthorized</h1>
+    <p>You are not authorized to view this page.</p>
+</div>
+<% else %>
+<h1 class="more-margin mb-4">Edit Admin</h1>
+
+<%= form_with(model: @admin, local: true, html: { class: 'needs-validation more-margin' }, novalidate: '') do |form| %>
+  <div class="mb-3">
+    <%= form.label :email, class: 'form-label' %>
+    <%= form.text_field :email, class: 'form-control', disabled: '' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :full_name, class: 'form-label' %>
+    <%= form.text_field :full_name, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :avatar_url, class: 'form-label' %>
+    <%= form.text_field :avatar_url, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :superadmin, class: 'form-label' %>
+    <%= form.check_box :superadmin, class: 'form-check-input' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :admin, class: 'form-label' %>
+    <%= form.check_box :admin, class: 'form-check-input' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :lesseradmin, class: 'form-label' %>
+    <%= form.check_box :lesseradmin, class: 'form-check-input' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :support, class: 'form-label' %>
+    <%= form.check_box :support, class: 'form-check-input' %>
+  </div>
+
+    <div class="mb-3">
+        <%= form.label :disabled, class: 'form-label' %>
+        <%= form.check_box :disabled, class: 'form-check-input' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.submit 'Update', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<% end %>

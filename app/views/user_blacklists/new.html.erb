@@ -1,5 +1,6 @@
 <%= render "dashboards/navbar" %>
-<% if current_admin.support? %>
+<% if current_admin.support? or current_admin.lesseradmin? or current_admin.disabled? %>
+    <% # consolidated because its done and i dont wanna fuck it up %>
     <div class=" p-5 text-white pseudo-jumbotron-withbg">
         <h1>403 Forbidden</h1>
         <p>As Support, you cant directly place blacklists. Place a request instead.</p>

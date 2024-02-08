@@ -1,5 +1,12 @@
 <%= render "dashboards/navbar" %>
+<% if current_admin.disabled? %>
+<div class="p-5 text-white pseudo-jumbotron-withbg">
+    <h1>Unauthorized</h1>
+    <p>You are not authorized to view this page.</p>
+</div>
+<% else %>
     <div class=" p-5 text-white pseudo-jumbotron-withbg">
       <h1>Hope you're having a fine evening, <%= current_admin.full_name.split.first %></h1>
       <p>Welcome to AdminCentre. As you can tell its very WIP so dont expect much to work.</p>
     </div>
+<% end %>

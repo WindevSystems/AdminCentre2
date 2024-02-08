@@ -1,4 +1,10 @@
 <%= render "dashboards/navbar" %>
+<% if current_admin.disabled? %>
+<div class="p-5 text-white pseudo-jumbotron-withbg">
+    <h1>Unauthorized</h1>
+    <p>You are not authorized to view this page.</p>
+</div>
+<% else %>
 <div class="container mt-5">
   <h1 class="mb-4">User Blacklist</h1>
 
@@ -19,7 +25,7 @@
                 <td><%= user_blacklist.reason %></td>
                 <td><%= user_blacklist.level %></td>
                 <td>
-                    <% if current_admin.support? %>
+                    <% if current_admin.support? or current_admin.lesseradmin? %>
                         <p><i class="fa-solid fa-lock"></i> No Permission</p>
                     <% else %>
                         <%= link_to 'Show', user_blacklist_path(user_blacklist.userid), class: 'btn btn-primary' %>
@@ -34,3 +40,4 @@
 
   <%= link_to 'New User Blacklist', new_user_blacklist_path, class: 'btn btn-primary' %>
 </div>
+<% end %>

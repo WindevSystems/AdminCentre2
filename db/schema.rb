@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_08_011744) do
+ActiveRecord::Schema.define(version: 2024_02_08_024354) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2024_02_08_011744) do
     t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "licenses", force: :cascade do |t|
+    t.integer "userid"
+    t.json "products"
+    t.json "suspendedproducts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["userid"], name: "index_licenses_on_userid", unique: true
   end
 
   create_table "user_blacklists", force: :cascade do |t|
