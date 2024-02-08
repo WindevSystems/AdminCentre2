@@ -21,4 +21,12 @@
 .automagic-margin {
     margin-top: 10px;
     margin-left: 30px;
+    margin-right: 30px;
+}
+
+.more-margin {
+    margin-top: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 20px;
 }

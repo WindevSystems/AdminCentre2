@@ -1,0 +1,41 @@
+<%= render "dashboards/navbar" %>
+<% if current_admin.support? %>
+    <div class=" p-5 text-white pseudo-jumbotron-withbg">
+        <h1>403 Forbidden</h1>
+        <p>As Support, you cant directly place blacklists. Place a request instead.</p>
+        <a href="/" class="btn btn-primary">Return to Dashboard</a>
+    </div>
+<% else %>
+<% if @user_blacklist %>
+  <%= form_for @user_blacklist, html: { class: 'needs-validation', novalidate: '' } do |f| %>
+    <% if @user_blacklist.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><%= pluralize(@user_blacklist.errors.count, "error") %> prohibited this user blacklist from being saved:</h4>
+        <ul>
+        <% @user_blacklist.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group more-margin">
+      <%= f.label :userid, "User ID", class: 'control-label' %>
+      <%= f.text_field :userid, class: 'form-control', required: '' %>
+      <div class="invalid-feedback">Please provide a valid User ID.</div>
+      <%= f.label :reason, class: 'control-label' %>
+      <%= f.text_field :reason, class: 'form-control', required: '' %>
+      <div class="invalid-feedback">Please provide a valid reason.</div>
+      <%= f.label :level, class: 'control-label' %>
+      <%= f.select :level, options_for_select([['1 - Products fail to start', 1], ['2 - :trol: (dont use, unimplemented)', 2], ['3 - Kicks them with the specified reason message', 3]]), {}, { class: 'form-control' } %>
+      <div class="invalid-feedback">Please select a blacklist level.</div>
+    </div>
+
+    <div class="form-group more-margin">
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% else %>
+  <p>The @UserBlacklist object is nil or empty.</p>
+<% end %>
+<% end %>

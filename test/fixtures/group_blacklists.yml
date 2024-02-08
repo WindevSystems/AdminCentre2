@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  groupid: 1
+  rankid: 1
+  reason: MyString
+  level: 1
+
+two:
+  groupid: 1
+  rankid: 1
+  reason: MyString
+  level: 1

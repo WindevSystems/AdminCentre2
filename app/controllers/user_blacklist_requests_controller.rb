@@ -1,0 +1,2 @@
+class UserBlacklistRequestsController < ApplicationController
+end

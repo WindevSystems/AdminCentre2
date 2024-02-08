@@ -1,0 +1,2 @@
+class GroupBlacklist < ApplicationRecord
+end
