@@ -12,14 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_07_01_144912) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
     t.string "full_name"
     t.string "uid"
     t.string "avatar_url"
+    t.boolean "superadmin", default: false
+    t.boolean "admin", default: false
+    t.boolean "lesseradmin", default: false
+    t.boolean "support", default: true
+    t.boolean "disabled", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true

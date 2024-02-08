@@ -7,6 +7,11 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
       t.string :full_name
       t.string :uid
       t.string :avatar_url
+      t.boolean :superadmin, default: false
+      t.boolean :admin, default: false
+      t.boolean :lesseradmin, default: false
+      t.boolean :support, default: true
+      t.boolean :disabled, default: false
 
       t.timestamps null: false
     end

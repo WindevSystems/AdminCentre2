@@ -1,0 +1,80 @@
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img width="24" height="24" src="/assets/ac.png">
+          AdminCentre
+        </a>
+        <button class="navbar-toggler" type="button" data-coreui-toggle="collapse" data-coreui-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-coreui-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-certificate"></i> Licensing
+              </a>
+              <ul class="dropdown-menu">
+                <% if current_admin.support? || !current_admin.lesseradmin? || !current_admin.admin? || !current_admin.superadmin? %>
+                  <li><a class="dropdown-item" href="#">Search Licenses</a></li>
+                  <li><a class="dropdown-item" href="#">Request a Suspension or Revocation</a></li>
+                <% elsif current_admin.lesseradmin? || current_admin.admin? || current_admin.superadmin? %>
+                  <li><a class="dropdown-item" href="#">Search & Manage</a></li>
+                <% end # for now %>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-coreui-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-ban"></i> Blacklists
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Blacklist By Group</a></li>
+                <li><a class="dropdown-item" href="#">Blacklist By User</a></li>
+                <li><a class="dropdown-item" href="#">Requests</a></li>
+                <li><a class="dropdown-item" href="#">Search & Manage</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-coreui-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-question"></i> Help
+              </a>
+              <ul class="dropdown-menu">
+                <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#aboutModal">About AdminCentre</a></li>
+                <li><a class="dropdown-item" href="./attrib.html">Attribution & Credits</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+                <div class="ms-auto dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-coreui-toggle="dropdown" aria-expanded="false">
+                    <img src=<%= current_admin.avatar_url.to_s %> height="32" width="32" style="border-radius:50%"> <%= current_admin.full_name.to_s %>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><p class="dropdown-item">Logged in as <%= current_admin.full_name.to_s %></p></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><%= link_to "Sign Out", destroy_admin_session_path, class: "dropdown-item" %></li>
+                  </ul>
+                </div>
+      </div>
+
+<!-- Modal: About AC -->
+<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="aboutModalLabel"><i class="fa-solid fa-info"></i> About AdminCentre</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-row" style="gap:10px;">
+        <div class="me-auto"><img src="./ac.png" width="160" height="160"></div><div class="ms-auto"><h3>AdminCentre&sup2;</h1><p><i>A dysfunctional Axon ripoff. I'm sorry, Whitehill</i><br />Made with CoreUI and Bootstrap 5<br />&copy; 2024 Windev Systems.<br /><a href="https://github.com/haydenwalker980/AdminCentre-Concepts">Look at this on GitHub</a></p></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</nav>

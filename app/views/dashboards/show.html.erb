@@ -1,2 +1,5 @@
-<h1>You're logged in! Welcome to the Admin Dashboard!</h1>
-<%= link_to "Sign Out", destroy_admin_session_path %>
+<%= render "dashboards/navbar" %>
+    <div class=" p-5 text-white pseudo-jumbotron-withbg">
+      <h1>Hope you're having a fine evening, <%= current_admin.full_name.split.first %></h1>
+      <p>Welcome to AdminCentre. As you can tell its very WIP so dont expect much to work.</p>
+    </div>

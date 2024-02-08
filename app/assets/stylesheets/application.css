@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+.pseudo-jumbotron-withbg {
+    background-image: url("/assets/jumbotron-bg.png");
+    background-size: 1750px 500px;
+}
+
+.automagic-margin {
+    margin-top: 10px;
+    margin-left: 30px;
+}
