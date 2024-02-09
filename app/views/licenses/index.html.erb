@@ -1,12 +1,14 @@
 <%= render "dashboards/navbar" %>
-<h1 class="mb-4 more-margin">User Licenses</h1>
+<div class="container mt-5">
+<h1 class="mb-4">User Licenses</h1>
 
-<table class="table more-margin">
+<table class="table">
   <thead>
     <tr>
       <th>User ID</th>
       <th>KGC License</th>
-      <th>Timeclock License</th>
+      <th>TimeClock License</th>
+      <th>Comment</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -14,8 +16,9 @@
     <% @license.each do |license| %>
       <tr>
         <td><%= license.userid %></td>
-        <td><%= license.kgc_license %></td>
-        <td><%= license.timeclock_license %></td>
+        <td><%= kgcstatusprettify(license) %></td>
+        <td><%= timeclockstatusprettify(license) %></td>
+        <td><%= license.comment %></td>
         <td>
           <% if current_admin.support? %>
             <p><i class="fa-solid fa-lock"></i> No Permission</p>
@@ -31,5 +34,6 @@
 
 <% if current_admin.support? %>
 <% else %>
-<%= link_to 'New License', new_license_path, class: 'btn btn-primary more-margin' %>
+<%= link_to 'New License', new_license_path, class: 'btn btn-primary' %>
 <% end %>
+</div>

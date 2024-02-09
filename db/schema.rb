@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_08_213848) do
+ActiveRecord::Schema.define(version: 2024_02_09_170442) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2024_02_08_213848) do
     t.boolean "disabled", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bio", limit: 400, default: "No user bio set"
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 2024_02_08_213848) do
     t.datetime "updated_at", null: false
     t.integer "kgc_license", default: 0
     t.integer "timeclock_license", default: 0
+    t.string "comment"
     t.index ["userid"], name: "index_licenses_on_userid", unique: true
   end
 

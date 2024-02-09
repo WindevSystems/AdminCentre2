@@ -1,5 +1,5 @@
 <%= render "dashboards/navbar" %>
-<% if current_admin.support? or current_admin.lesseradmin? or current_admin.admin? or current_admin.disabled? %>
+<% if !current_admin.superadmin? or current_admin.disabled? %>
 <div class="p-5 text-white pseudo-jumbotron-withbg">
     <h1>Unauthorized</h1>
     <p>You are not authorized to view this page.</p>
@@ -31,8 +31,9 @@
           <td><%= admin.disabled ? 'Yes' : 'No' %></td>
           <td><%= admin.uid %></td>
           <td>
+            <%= link_to 'Profile', admin_path(admin), class: 'btn btn-info text-white' %>
             <%= link_to 'Edit', edit_admin_path(admin), class: 'btn btn-primary' %>
-            <%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-white' %>
           </td>
         </tr>
       <% end %>

@@ -30,6 +30,8 @@
       <%= f.label :timeclock_license, "TimeClock license status", class: 'control-label' %>
       <%= f.select :timeclock_license, options_for_select([['Unlicensed', 0], ['Licensed', 1], ['Suspended License', 2]]), {}, { class: 'form-control' } %>
       <div class="invalid-feedback">Please select an option.</div>
+      <%= f.label :comment, class: 'control-label' %>
+      <%= f.text_field :comment, class: 'form-control'%>
     </div>
 
     <div class="form-group more-margin">

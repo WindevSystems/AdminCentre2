@@ -1,13 +1,13 @@
 <%= render "dashboards/navbar" %>
-<% if current_admin.support? or current_admin.lesseradmin? or current_admin.admin? or current_admin.disabled? %>
+<% if !current_admin.superadmin? and @admin.userid != current_admin.userid or current_admin.disabled? %>
 <div class="p-5 text-white pseudo-jumbotron-withbg">
     <h1>Unauthorized</h1>
     <p>You are not authorized to view this page.</p>
 </div>
 <% else %>
-<h1 class="more-margin mb-4">Edit Admin</h1>
 
 <%= form_with(model: @admin, local: true, html: { class: 'needs-validation more-margin' }, novalidate: '') do |form| %>
+<% if !current_admin.superadmin? or current_admin.email == @admin.email %><h1 class="mb-4">Update Profile</h1><% else %><h1 class="mb-4">Edit <%= @admin.full_name%>'s Profile</h1><% end %>
   <div class="mb-3">
     <%= form.label :email, class: 'form-label' %>
     <%= form.text_field :email, class: 'form-control', disabled: '' %>
@@ -19,10 +19,22 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :avatar_url, class: 'form-label' %>
+    <%= form.label :avatar_url, "Avatar URL", class: 'form-label' %>
     <%= form.text_field :avatar_url, class: 'form-control' %>
+    <p class="form-text">By default mapped to your Google image. Must be a publicly accessible URL.</p>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :bio, class: 'form-label' %>
+    <%= form.text_area :bio, class: 'form-control' %>
+  </div>
+<% if !current_admin.superadmin? %>
+  <div class="mb-3">
+    <% # role doesn't do anything here but :shush: they dont need to know %>
+    <label class="form-label">Role</label>
+    <input type="text" class="form-control" value="<%= consolidate_roles(@admin) %>" disabled>
+  </div>
+<% else %>
   <div class="mb-3">
     <%= form.label :superadmin, class: 'form-label' %>
     <%= form.check_box :superadmin, class: 'form-check-input' %>
@@ -51,5 +63,6 @@
   <div class="mb-3">
     <%= form.submit 'Update', class: 'btn btn-primary' %>
   </div>
+<% end %>
 <% end %>
 <% end %>

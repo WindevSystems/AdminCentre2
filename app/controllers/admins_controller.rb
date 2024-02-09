@@ -13,7 +13,7 @@ class AdminsController < ApplicationController
 
   def update
     @admin = Admin.find(params[:uid])
-    if current_admin.support? or current_admin.lesseradmin? or current_admin.id == @admin.id or current_admin.admin?
+    if current_admin.support? or current_admin.lesseradmin? or current_admin.id != @admin.id and !current_admin.superadmin or current_admin.admin?
       flash[:error] = "You do not have permission to do that."
       redirect_to admins_path
       return
@@ -28,7 +28,7 @@ class AdminsController < ApplicationController
 
   def destroy
     @admin = Admin.find(params[:uid])
-    if current_admin.support? or current_admin.lesseradmin? or current_admin.id == @admin.id or current_admin.admin?
+    if current_admin.support? or current_admin.lesseradmin? or current_admin.admin? or current_admin.id == @admin.id
       flash[:error] = "You do not have permission to do that."
       redirect_to admins_path
       return
@@ -45,6 +45,6 @@ class AdminsController < ApplicationController
   private
 
   def admin_params
-    params.require(:admin).permit(:email, :avatar_url, :superadmin, :admin, :lesseradmin, :support, :disabled, :full_name, :uid)
+    params.require(:admin).permit(:email, :avatar_url, :superadmin, :admin, :lesseradmin, :support, :disabled, :full_name, :uid, :bio)
   end
 end

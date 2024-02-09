@@ -17,11 +17,11 @@
                 <i class="fa-solid fa-certificate"></i> Licensing
               </a>
               <ul class="dropdown-menu">
-                <% if current_admin.support? || !current_admin.lesseradmin? || !current_admin.admin? || !current_admin.superadmin? %>
-                  <li><a class="dropdown-item" href="#">Search Licenses</a></li>
+                <% if current_admin.support? %>
+                  <li><a class="dropdown-item" href="/licenses">Search Licenses</a></li>
                   <li><a class="dropdown-item" href="#">Request a Suspension or Revocation</a></li>
                 <% elsif current_admin.lesseradmin? || current_admin.admin? || current_admin.superadmin? %>
-                  <li><a class="dropdown-item" href="#">Search & Manage</a></li>
+                  <li><a class="dropdown-item" href="/licenses">Search & Manage</a></li>
                 <% end # for now %>
               </ul>
             </li>
@@ -30,7 +30,7 @@
                 <i class="fa-solid fa-ban"></i> Blacklists
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/user_blacklists/new">Blacklist User...</a></li>
+                <li><a class="dropdown-item" href="/user_blacklists/new">Blacklist User</a></li>
                 <li><a class="dropdown-item" href="/user_blacklists">User Blacklists</a></li>
                 <li><a class="dropdown-item" href="#">Requests</a></li>
               </ul>
@@ -60,7 +60,7 @@
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li><p class="dropdown-item">Logged in as <%= current_admin.full_name.to_s %></p></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="/admins/<%= current_admin.id %>">Profile</a></li>
                     <li><%= link_to "Sign Out", destroy_admin_session_path, class: "dropdown-item" %></li>
                   </ul>
                 </div>

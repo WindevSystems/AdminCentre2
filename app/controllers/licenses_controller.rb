@@ -53,6 +53,6 @@ class LicensesController < ApplicationController
   private
 
   def license_params
-    params.require(:license).permit(:userid, :kgc_license, :timeclock_license)
+    params.require(:license).permit(:userid, :kgc_license, :timeclock_license, :comment)
   end
 end
