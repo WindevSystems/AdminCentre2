@@ -1,0 +1,45 @@
+<%= render "dashboards/navbar" %>
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<% if current_admin.support? or current_admin.lesseradmin? or current_admin.disabled? %>
+        <div class=" p-5 text-white pseudo-jumbotron-withbg">
+                <h1>403 Forbidden</h1>
+                <p>As Support, you cant directly edit blacklists. Place a request instead.</p>
+                <a href="/" class="btn btn-primary">Return to Dashboard</a>
+        </div>
+<% else %>
+<% if @license %>
+        <%= form_with(model: @license, url: licenses_path(@license.userid), local: true, html: { class: 'needs-validation', novalidate: '' }, method: :patch) do |f| %>
+        <% if @license.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading"><%= pluralize(@license.errors.count, "error") %> prohibited this license from being saved:</h4>
+                <ul>
+                <% @license.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+    <div class="form-group more-margin">
+      <%= f.label :userid, "User ID", class: 'control-label' %>
+      <%= f.text_field :userid, class: 'form-control', disabled: '' %>
+      <%= f.label :kgc_license, "KGC license status", class: 'control-label' %>
+      <%= f.select :kgc_license, options_for_select([['Unlicensed', 0], ['Licensed', 1], ['Suspended License', 2]]), {}, { class: 'form-control' } %>
+      <div class="invalid-feedback">Please select an option.</div>
+      <%= f.label :timeclock_license, "TimeClock license status", class: 'control-label' %>
+      <%= f.select :timeclock_license, options_for_select([['Unlicensed', 0], ['Licensed', 1], ['Suspended License', 2]]), {}, { class: 'form-control' } %>
+      <div class="invalid-feedback">Please select an option.</div>
+    </div>
+
+        <div class="form-group more-margin">
+            <%= f.submit 'Update', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+<% else %>
+    <p>The @license object is nil or empty.</p>
+<% end %>
+<% end %>

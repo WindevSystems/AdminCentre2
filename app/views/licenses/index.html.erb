@@ -1,0 +1,35 @@
+<%= render "dashboards/navbar" %>
+<h1 class="mb-4 more-margin">User Licenses</h1>
+
+<table class="table more-margin">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>KGC License</th>
+      <th>Timeclock License</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @license.each do |license| %>
+      <tr>
+        <td><%= license.userid %></td>
+        <td><%= license.kgc_license %></td>
+        <td><%= license.timeclock_license %></td>
+        <td>
+          <% if current_admin.support? %>
+            <p><i class="fa-solid fa-lock"></i> No Permission</p>
+          <% else %>
+            <%= link_to 'Edit', edit_license_path(license.userid), class: 'btn btn-primary' %>
+            <%= link_to 'Destroy', license_path(license.userid), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_admin.support? %>
+<% else %>
+<%= link_to 'New License', new_license_path, class: 'btn btn-primary more-margin' %>
+<% end %>
