@@ -8,6 +8,9 @@
 .env*
 !sample.env
 
+# Ignore Sentry config
+config/initializers/sentry.rb
+
 # Ignore bundler config.
 /.bundle
 
