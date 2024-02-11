@@ -40,4 +40,6 @@ class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def auth
     @auth ||= request.env['omniauth.auth']
   end
+
+  # ldap
 end

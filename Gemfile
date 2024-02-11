@@ -63,8 +63,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise', "= 4.6.2"
+# to be phased out after rewrite - for ynh, this is easier
 gem 'omniauth', "= 1.9.0"
 gem 'omniauth-google-oauth2', "= 0.7.0"
+gem 'devise_ldap_authenticatable'
 gem 'dotenv-rails'
 gem 'sqlite3'
 gem 'htmlbeautifier'

@@ -5,6 +5,8 @@ class AdminsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update]
   end
 
+  # ldap
+
   def index
     @admins = Admin.all
   end
