@@ -3,6 +3,12 @@ Welcome back to watchmojo.com where today we will be counting down the top 10 mo
 
 Dysfunctional Axon ripoff handling licensing and blacklisting for kryptic. It's different *enough.*
 
+## ynh branch
+This branch has features specifically designed to make it easier to write YNH app packages for, like:
+- Email domain lock config
+- Rake task improvements
+- Other things ill add when ynh app package development bites me in the ass
+
 ## A disclaimer
 We've open sourced this for convenience and so that you can take a ponder at our god awful source code, this is really customised to kryptic and would require a bit of modification to get working for your own group. Provided you know Rails, it shouldn't be too hard, you'd need to edit:  
 - `db/migrate/20240208024354_create_licenses.rb` (add or rename columns to your liking)
