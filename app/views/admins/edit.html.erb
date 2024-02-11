@@ -28,6 +28,11 @@
     <%= form.label :bio, class: 'form-label' %>
     <%= form.text_area :bio, class: 'form-control' %>
   </div>
+
+  <div class="mb-3">
+    <%= form.label :theme, class: 'form-label' %>
+    <%= form.select :theme, options_for_select([['Default', 0], ['Light', 1], ['Dark', 2]], @admin.theme), {}, class: 'form-select' %>
+  </div>
 <% if !current_admin.superadmin? %>
   <div class="mb-3">
     <% # role doesn't do anything here but :shush: they dont need to know %>
