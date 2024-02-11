@@ -1,7 +1,9 @@
 class AdminsController < ApplicationController
   # probably the most important controller to authenticate
   before_action :authenticate_admin!
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update]
+  if ENV["CODESPACES"]
+    skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update]
+  end
 
   def index
     @admins = Admin.all

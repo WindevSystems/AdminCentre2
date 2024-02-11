@@ -1,5 +1,7 @@
 class UserBlacklistRequestsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update]
+  if ENV["CODESPACES"]
+    skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update]
+  end
   before_action :authenticate_admin!, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
