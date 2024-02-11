@@ -45,4 +45,4 @@ Setting up for development work isn't too hard.
 guide coming soonish, once we actually set it up in production first
 
 ## Contributing
-Follow development setup instructions
+Follow development setup instructions, label your PRs clearly
