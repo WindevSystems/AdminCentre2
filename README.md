@@ -30,6 +30,7 @@ Setting up for development work isn't too hard.
 - `git clone https://github.com/WindevSystems/AdminCentre2` (skip if using Codespaces)
 - `cd AdminCentre2` (skip if using Codespaces)
 - Copy .env and fill it with the respective values from the GCP console
+- Copy sentry.example.rb to sentry.rb and fill in the DSN
 - `bundle install`
 - `rake setup:apitoken`, place the output in .env
 - `rails db:migrate`

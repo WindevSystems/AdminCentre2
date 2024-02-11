@@ -30,7 +30,7 @@ class LicensesController < ApplicationController
       render json: { success: false, error: "No license object found for that user" }
       return
     end
-    if restauth(params[:token]) == false
+    if restauth(request.headers["Authorization"]) == false
       render json: { success: false, error: "CONGRATULATION!!! Youve been IP banned." }
       IpBan.create(ip: request.remote_ip, reason: "Generic Security Suite™®: Unauthorized API access (token mismatch)", actioneremail: "API", incidentid: "API", until: "9999-12-31 23:59:59", appealabledate: nil, appealable: false)
       return
