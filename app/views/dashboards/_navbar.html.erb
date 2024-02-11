@@ -84,3 +84,21 @@
   </div>
 </div>
 </nav>
+<% flash.each do |type, msg| %>
+  <% if type == "alert" %>
+  <div class="alert alert-danger">
+    <h3>Error</h3>
+    <%= msg %>
+  </div>
+  <% elsif type == "notice" %>
+  <div class="alert alert-info">
+    <h3>Attention</h3>
+    <%= msg %>
+  </div>
+  <% elsif type == "success" %>
+  <div class="alert alert-success">
+    <h3>Success</h3>
+    <%= msg %>
+  </div>
+  <% end %>
+<% end %>

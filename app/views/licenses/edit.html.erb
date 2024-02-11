@@ -12,6 +12,10 @@
         </div>
 <% else %>
 <% if @license %>
+        <div class=" p-5 text-white pseudo-jumbotron-withbg">
+                <h1>Update Licenses for ID <%= @license.userid %></h1>
+                <p><b>Your actions will be logged to your IP. Dont be a moron.</b></p>
+        </div>
         <%= form_with(model: @license, url: license_path(@license.userid, 'edit'), local: true, html: { class: 'needs-validation', novalidate: '' }, method: :patch) do |f| %>
         <% if @license.errors.any? %>
             <div class="alert alert-danger" role="alert">
@@ -29,9 +33,11 @@
       <%= f.text_field :userid, class: 'form-control', disabled: '' %>
       <%= f.label :kgc_license, "KGC license status", class: 'control-label' %>
       <%= f.select :kgc_license, options_for_select([['Unlicensed', 0], ['Licensed', 1], ['Suspended License', 2]]), {}, { class: 'form-control' } %>
+      <p class="form-text">Currently: <%= kgcstatusprettify(@license) %></p>
       <div class="invalid-feedback">Please select an option.</div>
       <%= f.label :timeclock_license, "TimeClock license status", class: 'control-label' %>
       <%= f.select :timeclock_license, options_for_select([['Unlicensed', 0], ['Licensed', 1], ['Suspended License', 2]]), {}, { class: 'form-control' } %>
+      <p class="form-text">Currently: <%= timeclockstatusprettify(@license) %></p>
       <div class="invalid-feedback">Please select an option.</div>
       <%= f.label :comment, class: 'control-label' %>
       <%= f.text_field :comment, class: 'form-control'%>

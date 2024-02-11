@@ -8,6 +8,10 @@
     </div>
 <% else %>
 <% if @license %>
+          <div class=" p-5 text-white pseudo-jumbotron-withbg">
+                <h1>Add New License Object</h1>
+                <p><b>Your actions will be logged to your IP. Dont be a moron.</b></p>
+        </div>
   <%= form_for @license, html: { class: 'needs-validation', novalidate: '' } do |f| %>
     <% if @license.errors.any? %>
       <div class="alert alert-danger" role="alert">

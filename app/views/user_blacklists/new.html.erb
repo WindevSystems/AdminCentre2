@@ -8,6 +8,10 @@
     </div>
 <% else %>
 <% if @user_blacklist %>
+        <div class=" p-5 text-white pseudo-jumbotron-withbg">
+                <h1>New Blacklist</h1>
+                <p><b>Your actions will be logged to your IP. Dont be a moron.</b></p>
+        </div>
   <%= form_for @user_blacklist, html: { class: 'needs-validation', novalidate: '' } do |f| %>
     <% if @user_blacklist.errors.any? %>
       <div class="alert alert-danger" role="alert">

@@ -1,0 +1,2 @@
+class UserBlacklistRequest < ApplicationRecord
+end

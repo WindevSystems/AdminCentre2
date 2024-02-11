@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userid: 1
+  suggestedlevel: 1
+  reason: MyString
+  evidence: MyString
+  requesterid: 1
+
+two:
+  userid: 1
+  suggestedlevel: 1
+  reason: MyString
+  evidence: MyString
+  requesterid: 1

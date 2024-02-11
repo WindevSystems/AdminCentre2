@@ -23,14 +23,14 @@
             <tr>
                 <td><%= user_blacklist.userid %></td>
                 <td><%= user_blacklist.reason %></td>
-                <td><%= user_blacklist.level %></td>
+                <td><%= consolidatestatus(user_blacklist) %></td>
                 <td>
                     <% if current_admin.support? or current_admin.lesseradmin? %>
                         <p><i class="fa-solid fa-lock"></i> No Permission</p>
                     <% else %>
-                        <%= link_to 'Show', user_blacklist_path(user_blacklist.userid), class: 'btn btn-primary' %>
-                        <%= link_to 'Edit', edit_user_blacklist_path(user_blacklist.userid), class: 'btn btn-warning' %>
-                        <%= link_to 'Destroy', user_blacklist_path(user_blacklist.userid), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>                    <% end %>
+                        <%= link_to 'Edit', edit_user_blacklist_path(user_blacklist.userid), class: 'btn btn-warning text-white' %>
+                        <%= link_to 'Destroy', user_blacklist_path(user_blacklist.userid), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-white' %>
+                    <% end %>
                 </td>
             </tr>
         <% end %>

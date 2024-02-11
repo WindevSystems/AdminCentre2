@@ -11,9 +11,11 @@
                         <div>
                             <h1><%= @admin.full_name %></h1>
                             <p><%= consolidate_roles(@admin) %><br /><%= @admin.email %></p>
-                            <% # Development Placeholders: take a lyric from Hawaii Pt II %>
                             <h4>About Me</h4>
                             <p><%= @admin.bio %></p>
+                            <% if @admin.id == current_admin.id or current_admin.superadmin? %>
+                                <%= link_to 'Edit Profile', edit_admin_path(@admin), class: 'btn btn-primary' %>
+                            <% end %>
                         </div>
                     </div>
                 </div>

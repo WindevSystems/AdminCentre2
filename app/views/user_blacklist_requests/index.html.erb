@@ -1,0 +1,57 @@
+<%= render "dashboards/navbar" %>
+<div class="container mt-5">
+<% if current_admin.admin? or current_admin.superadmin? %>
+<h1 class="mb-4">User Blacklist Requests</h1>
+<% elsif current_admin.lesseradmin? %>
+<h1 class="mb-4">Your UBL Requests</h1>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Proposed Target ID</th>
+      <th>Proposed Level</th>
+      <th>License Revocation Needed?</th>
+      <th>Reasoning</th>
+      <th>Evidence</th>
+      <th>Status</th>
+      <% if current_admin.admin? or current_admin.superadmin? %>
+      <th>Requester</th>
+      <% end %>
+      <th>Claimer (if claimed)</th>
+
+  </thead>
+  <tbody>
+    <% @user_blacklist_request.each do |ublr| %>
+      <tr>
+        <td><%= ublr.targetuserid %></td>
+        <td><%= ublr.suggestedlevel %></td>
+        <td><%= ublr.licenserevocneeded %></td>
+        <td><%= ublr.reasoning %></td>
+        <td><%= ublr.evidence %></td>
+        <td><%= consolidatestatus(@user_blacklist_request) %>
+        <% if current_admin.admin? or current_admin.superadmin? %>
+        <td><%= ublr.requesteremail %></td>
+        <% end %>
+        <% if ublr.claimeremail and current_admin.lesseradmin? %>
+        <td><%= ublr.claimeremail %></td>
+        <% else %>
+        <td>Unclaimed</td>
+        <% end %>
+        <td>
+          <% if current_admin.lesseradmin? %>
+            <p><i class="fa-solid fa-lock"></i> No Permission</p>
+          <% else %>
+            <%= link_to 'View', user_blacklist_request_path(ublr.targetuserid), class: 'btn btn-primary' %>
+            <%= link_to 'Edit', edit_user_blacklist_request_path(ublr.targetuserid), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', user_blacklist_request_path(ublr.targetuserid), method: :delete, data: { confirm: 'Really?' }, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if !current_admin.support? %>
+<%= link_to 'New License', new_license_path, class: 'btn btn-primary' %>
+<% end %>
+</div>

@@ -67,3 +67,4 @@ gem 'omniauth-google-oauth2', "= 0.7.0"
 gem 'dotenv-rails'
 gem 'sqlite3'
 gem 'htmlbeautifier'
+gem 'whenever'

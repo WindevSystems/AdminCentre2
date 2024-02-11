@@ -1,5 +1,13 @@
 <!doctype html>
+<% if current_admin %>
+<% if current_admin.theme == 0 or current_admin.theme == 2 %>
 <html lang="en" data-coreui-theme="dark">
+<% else %>
+<html lang="en">
+<% end %>
+<% else %>
+<html lang="en" data-coreui-theme="dark">
+<% end %>
   <head>
     <title>AdminCentre&sup2;</title>
     <meta charset="utf-8">
@@ -12,20 +20,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <style>
-        .flash__alert   { color: red; }
-        .flash__notice  { color: blue; }
-        .flash__success { color: green; }
-    </style>
   </head>
 
   <body>
-    <% if flash.any? %>
-      <% flash.each do |key, value| -%>
-        <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
-      <% end -%>
-    <% end %>
-
     <%= yield %>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.0-rc.1/dist/js/coreui.min.js" integrity="sha384-yIN7KBAWSPbR8QfA9iqq4ODblVsFM4Ib4nLpoZZi+0HxLjJUmO4WlnbH/xTHHPCA" crossorigin="anonymous"></script>

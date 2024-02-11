@@ -32,8 +32,7 @@
   </tbody>
 </table>
 
-<% if current_admin.support? %>
-<% else %>
+<% if !current_admin.support? %>
 <%= link_to 'New License', new_license_path, class: 'btn btn-primary' %>
 <% end %>
 </div>

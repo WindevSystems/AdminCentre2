@@ -5,3 +5,18 @@
           AdminCentre
         </a>
 </nav>
+<% flash.each do |type, msg| %>
+  <% if type == "alert" %>
+  <div class="alert alert-danger">
+    <%= msg %>
+  </div>
+  <% elsif type == "notice" %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+  <% elsif type == "success" %>
+  <div class="alert alert-success">
+    <%= msg %>
+  </div>
+  <% end %>
+<% end %>

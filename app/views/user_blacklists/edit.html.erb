@@ -12,6 +12,10 @@
         </div>
 <% else %>
 <% if @user_blacklist %>
+        <div class=" p-5 text-white pseudo-jumbotron-withbg">
+                <h1>Update Blacklist for ID <%= @user_blacklist.userid %></h1>
+                <p><b>Your actions will be logged to your IP. Dont be a moron.</b></p>
+        </div>
         <%= form_with(model: @user_blacklist, url: user_blacklist_path(@user_blacklist.userid), local: true, html: { class: 'needs-validation', novalidate: '' }, method: :patch) do |f| %>        <% if @user_blacklist.errors.any? %>
             <div class="alert alert-danger" role="alert">
                 <h4 class="alert-heading"><%= pluralize(@user_blacklist.errors.count, "error") %> prohibited this user blacklist from being saved:</h4>
@@ -29,8 +33,9 @@
             <%= f.label :reason, class: 'control-label' %>
             <%= f.text_field :reason, class: 'form-control', required: '' %>
             <div class="invalid-feedback">Please provide a valid reason.</div>
-            <%= f.label :level, class: 'control-label' %>
+            <%= f.label :level, "Level", class: 'control-label' %>
             <%= f.select :level, options_for_select([['1 - Products fail to start', 1], ['2 - :trol: (dont use, unimplemented)', 2], ['3 - Kicks them with the specified reason message', 3], ['4 - all of the above + publicly shamed in our Discord server', 4]]), {}, { class: 'form-control' } %>
+            <p class="form-text">Current: <%= consolidatestatus(@user_blacklist) %></p>
             <div class="invalid-feedback">Please select a blacklist level.</div>
         </div>
 
