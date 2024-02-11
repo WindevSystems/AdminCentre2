@@ -55,6 +55,7 @@ class LicensesController < ApplicationController
       render json: { success: false, message: "Grant failure. Unknown product or already purchased/license suspended" }
     end
   end
+end
 
   def index
     @license = License.all
