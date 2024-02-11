@@ -16,7 +16,7 @@ We've open sourced this for convenience and so that you can take a ponder at our
 - [x] Profiles & User Settings
 - [ ] Requests
 - [ ] Connection to a hub game
-- [ ] Bot
+- [x] [Bot](https://github.com/WindevSystems/AC2-Discord)
 
 ## Prerequisites
 - RVM (not required per se but recommended)
