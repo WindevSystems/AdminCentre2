@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_admin!
     before_action :check_ip_ban
 
     def check_ip_ban

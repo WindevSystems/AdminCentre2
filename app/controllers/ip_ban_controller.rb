@@ -1,4 +1,5 @@
 class IpBanController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @ip_bans = IpBan.all
   end

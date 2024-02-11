@@ -15,6 +15,7 @@ class LicensesController < ApplicationController
   end
 
   def restauth(token)
+    skip_before_action :authenticate_admin!
     # API endpoint for authenticating purchases from the Hub
     if token == ENV['HUB_API_TOKEN']
       return true
