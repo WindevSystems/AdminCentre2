@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class IpbanControllerTest < ActionDispatch::IntegrationTest
+class IpBanControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
