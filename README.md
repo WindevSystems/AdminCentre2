@@ -3,11 +3,12 @@ Welcome back to watchmojo.com where today we will be counting down the top 10 mo
 
 Dysfunctional Axon ripoff handling licensing and blacklisting for kryptic. It's different *enough.*
 
-## ynh branch
-This branch has features specifically designed to make it easier to write YNH app packages for, like:
-- Email domain lock config
-- Rake task improvements
-- Other things ill add when ynh app package development bites me in the ass
+## CODE ON THIS BRANCH IS MEANT FOR YUNOHOST ONLY
+Many changes make this different from master, like:
+- Several config files are missing (they are added by the YunoHost install helper)
+- The authentication system has been changed from Google to LDAP
+- Session destroy links now redirect to YunoHost SSO's sign out function once the session has been destroyed 
+**These changes make AC2 *nearly unusable* in non-YNH scenarios.**
 
 ## A disclaimer
 We've open sourced this for convenience and so that you can take a ponder at our god awful source code, this is really customised to kryptic and would require a bit of modification to get working for your own group. Provided you know Rails, it shouldn't be too hard, you'd need to edit:  
