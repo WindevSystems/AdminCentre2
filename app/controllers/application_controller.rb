@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
         else
             codespaces = true
         end
-        render json: { hello: "world", git: { commit: commit.delete("\n"), message: cmsg.delete("\n") }, ac2: "is a dysfunctional Axon ripoff, sorry whitehill", rails: { env: Rails.env.to_s, version: Rails.version.to_s }, codespaces: codespaces.to_s, Kryptologist: "i do believe im on fire *fucking dies*", Not_Ty: "dont b dum wen work on api or anthin else", you: "why are you snooping around here", thanks: "coreui people, copilot" }
+        render json: { hello: "world", git: { commit: commit.delete("\n"), message: cmsg.delete("\n") }, ac2: "is a dysfunctional Axon ripoff, sorry whitehill", rails: { env: Rails.env.to_s, version: Rails.version.to_s }, codespaces: codespaces.to_s, devs: { Kryptologist: "i do believe im on fire *fucking dies*", Not_Ty: "dont b dum wen work on api or anthin else" }, you: "why are you snooping around here", thanks: "coreui people, copilot" }
     end
 end
