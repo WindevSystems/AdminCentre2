@@ -1,6 +1,8 @@
 # AdminCentre&sup2;
 Welcome back to watchmojo.com where today we will be counting down the top 10 most generic names in software.
 
+Dysfunctional Axon ripoff handling licensing and blacklisting for kryptic. It's different *enough.*
+
 ## A disclaimer
 We've open sourced this for convenience and so that you can take a ponder at our god awful source code, this is really customised to kryptic and would require a bit of modification to get working for your own group. Provided you know Rails, it shouldn't be too hard, you'd need to edit:  
 - `db/migrate/20240208024354_create_licenses.rb` (add or rename columns to your liking)
@@ -41,3 +43,6 @@ Setting up for development work isn't too hard.
 
 ## Production Setup
 guide coming soonish, once we actually set it up in production first
+
+## Contributing
+Follow development setup instructions
