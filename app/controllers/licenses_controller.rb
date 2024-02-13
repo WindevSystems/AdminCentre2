@@ -8,8 +8,10 @@ class LicensesController < ApplicationController
     # really we don't need to do much, all logic is handled client side
     @license = License.find_by(userid: params[:userid])
     if @license.nil?
-      # create a blank object so we can return...something
-      @license = License.new(userid: params[:userid], kgc_license: 0, timeclock_license: 0, comment: "Created after API request").save
+      # create a new object
+      @license = License.new(userid: params[:userid], kgc_license: 0, timeclock_license: 0, comment: "Created after API request")
+      # save the object
+      @license.save
       render json: { success: true, licenses: { kgc: @license.kgc_license.to_i, timeclock: @license.timeclock_license.to_i } }
     else
       render json: { success: true, licenses: { kgc: @license.kgc_license.to_i, timeclock: @license.timeclock_license.to_i } }
