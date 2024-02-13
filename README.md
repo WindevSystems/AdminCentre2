@@ -25,6 +25,7 @@ We've open sourced this for convenience and so that you can take a ponder at our
 - Ruby 2.5.1
 - For production: a PostgreSQL server
 - A good amount of self hatred
+- More than 7 braincells
 
 ## Development setup
 Setting up for development work isn't too hard.
