@@ -1,4 +1,13 @@
 # AdminCentre&sup2;
+
+> [!CAUTION]
+> AdminCentre2 is not supported due to the recent closure of kryptic.
+>
+> Even then, it uses comically old versions of Ruby. If you want this feel free to fork it, privately or publicly. We dont maintain it anymore we couldnt give less of a fuck if we tried.
+>
+> Thx  
+> \- @haydenwalker980, CEO
+
 Welcome back to watchmojo.com where today we will be counting down the top 10 most generic names in software.
 
 Dysfunctional Axon ripoff handling licensing and blacklisting for kryptic. It's different *enough.*
